@@ -5,7 +5,7 @@
 using std::string;
 
 class Usuario{
-private:
+public:
 	string user;
 	string email;
 	string password;

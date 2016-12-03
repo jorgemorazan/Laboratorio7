@@ -56,7 +56,7 @@ int main(){
 			getline(super, correo, ' ');
 			getline(super, contra, ' ');
 			getline(super, otro, ' ');
-			supervisores.push_back(new Intern(nombre, correo, contra, atoi(otro.c_str()));
+			supervisores.push_back(new Supervisor(nombre, correo, contra, atoi(otro.c_str())));
 		}
 		super.close();
 	}
@@ -218,7 +218,7 @@ int main(){
 	if(esIntern){
 		int opt=0;
 		do{
-			cout<<endl"Intern"<<endl<<"1. Ver usuarios\n2. Eliminar Usuario\n3. Salir";
+			cout<<endl<<"Intern"<<endl<<"1. Ver usuarios\n2. Eliminar Usuario\n3. Salir";
 			if(opt==1){
 				for (int i = 0; i < interns.size(); ++i)
 				{
@@ -239,7 +239,7 @@ int main(){
 		//vector.erase(vector.begin()+numeropedido);
 	}
 	if(esSupervisor){
-		cout<<endl"MANAGERS"<<endl;
+		cout<<endl<<"MANAGERS"<<endl;
 		for (int i = 0; i < managers.size(); ++i)
 		{
 			cout<<i<<"-"<<managers.at(i)->toString()<<endl;
@@ -264,22 +264,22 @@ int main(){
 			file<< i<<"-"<<managers.at(i)->toString()<<endl;
 		}
 	}
-	ofstream file;
-	file.open("Interns.txt");
+	ofstream fileI;
+	fileI.open("Interns.txt");
 	
 	for (int i = 0; i < managers.size(); ++i)
 	{
 		if(managers.at(i)!=NULL){
-			file<< i<<"-"<<managers.at(i)->toString()<<endl;
+			fileI<< i<<"-"<<managers.at(i)->toString()<<endl;
 		}
 	}
-	ofstream file;
-	file.open("Supervisores.txt");
+	ofstream fileS;
+	fileS.open("Supervisores.txt");
 	
 	for (int i = 0; i < managers.size(); ++i)
 	{
 		if(managers.at(i)!=NULL){
-			file<< i<<"-"<<managers.at(i)->toString()<<endl;
+			fileS<< i<<"-"<<managers.at(i)->toString()<<endl;
 		}
 	}
 	return 0;
