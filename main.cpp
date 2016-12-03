@@ -23,7 +23,7 @@ int main(){
 	ifstream super;
 	mana.open("Managers.txt");
 	if(mana.fail()){
-		cout<<"ERROR";
+		cout<<"No hay nada en Managers.txt"<<endl;
 	}else{
 		while(!mana.eof()){
 			getline(mana, nombre, ' ');
@@ -36,7 +36,7 @@ int main(){
 	}
 	inter.open("Interns.txt");
 	if(inter.fail()){
-		cout<<"ERROR";
+		cout<<"No hay nada en Interns.txt"<<endl;
 	}else{
 		while(!inter.eof()){
 			getline(inter, nombre, ' ');
@@ -49,7 +49,7 @@ int main(){
 	}
 	super.open("Supervisores.txt");
 	if(super.fail()){
-		cout<<"ERROR";
+		cout<<"No hay nada en Supervisores"<<endl;
 	}else{
 		while(!super.eof()){
 			getline(super, nombre, ' ');
@@ -73,6 +73,7 @@ int main(){
 	for (int i = 0; i < managers.size(); ++i)
 	{
 		if(managers.at(i)->getUser()==username && managers.at(i)->getPassword()==password){
+			cout<<"Entre";
 			esManager=true;
 		}
 	}
@@ -261,25 +262,25 @@ int main(){
 	for (int i = 0; i < managers.size(); ++i)
 	{
 		if(managers.at(i)!=NULL){
-			file<< i<<"-"<<managers.at(i)->toString()<<endl;
+			file<<managers.at(i)->toString()<<endl;
 		}
 	}
 	ofstream fileI;
 	fileI.open("Interns.txt");
 	
-	for (int i = 0; i < managers.size(); ++i)
+	for (int i = 0; i < interns.size(); ++i)
 	{
-		if(managers.at(i)!=NULL){
-			fileI<< i<<"-"<<managers.at(i)->toString()<<endl;
+		if(interns.at(i)!=NULL){
+			fileI<<interns.at(i)->toString()<<endl;
 		}
 	}
 	ofstream fileS;
 	fileS.open("Supervisores.txt");
 	
-	for (int i = 0; i < managers.size(); ++i)
+	for (int i = 0; i < supervisores.size(); ++i)
 	{
-		if(managers.at(i)!=NULL){
-			fileS<< i<<"-"<<managers.at(i)->toString()<<endl;
+		if(supervisores.at(i)!=NULL){
+			fileS<<supervisores.at(i)->toString()<<endl;
 		}
 	}
 	return 0;
