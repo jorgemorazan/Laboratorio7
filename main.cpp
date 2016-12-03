@@ -129,7 +129,7 @@ int main(){
 					do{
 						cout<<"Ingrese el password del usuario: ";
 						cin>>pass;
-						sz=pass.ize();
+						sz=pass.size();
 						if(sz!=16){
 							cout<<endl<<"Tiene que tener 16 caracteres la contraseña"<<endl;
 						}
