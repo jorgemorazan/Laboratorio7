@@ -137,7 +137,7 @@ int main(){
 					string sueldo;
 					cout<<"Ingrese el sueldo del Manager: ";
 					cin>>sueldo;
-					anagers.push_back(new Manager(user, email, pass, sueldo));
+					managers.push_back(new Manager(user, email, pass, sueldo));
 				}
 				if(opcion==2){
 					//(string user,string email,string password, string dias)
