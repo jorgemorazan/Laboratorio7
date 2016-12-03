@@ -1,49 +1,24 @@
-#include "Usuario.h"
+#ifndef USUARIO_H
+#define USUARIO_H 
 #include <string>
-#include <sstream>
-using std::stringstream;
+
 using std::string;
 
-Usuario::Usuario(){
-
-}
-
-Usuario::~Usuario() {
-
-}
-
-Usuario::Usuario(string user, string email,string password){
-	this->user = user;
-	this->email = email;
-	this->password = password;
-}
-
-void Usuario::setUser(string pUser){
-  user = pUser;
-}
-
-string Usuario::getUser(){
-  return user;
-}
-
-void Usuario::setEmail(string pEmail){
-  email = pEmail;
-}
-
-string Usuario::getEmail(){
-  return email;
-}
-
-void Usuario::setPassword(int pPassword){
-  password = pPassword;
-}
-
-string Usuario::getPassword(){
-  return password;
-}
-
-string Usuario::toString(){
-	stringstream ss;
-	ss<<"Usuario: "<<user<<" Email: "<<email<<" Password: "<<password;
-	return ss.str();
-}
+class Usuario{
+private:
+	string user;
+	string email;
+	string password;
+public:
+	Usuario(string,string,string);
+	Usuario();
+	virtual ~Usuario();
+	void setUser(string);
+	string getUser();
+	void setEmail(string);
+	string getEmail();
+	void setPassword(string);
+	string getPassword();
+	string toString();
+};
+#endif

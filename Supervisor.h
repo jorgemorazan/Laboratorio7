@@ -11,7 +11,7 @@ class Supervisor : public Usuario {
     public:
         Supervisor(string,string,string,int);
         Supervisor();
-        void setContador(string);
+        void setContador(int);
 		int getContador();
 		string toString();
 };

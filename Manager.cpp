@@ -24,6 +24,6 @@ string Manager::getSueldo(){
 
 string Manager::toString(){
 	stringstream ss;
-	ss<<sueldo;
+	ss<<user<<" "<<email<<" "<<password<<" "<<sueldo;
 	return ss.str();
 }

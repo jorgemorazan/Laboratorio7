@@ -24,6 +24,6 @@ string Intern::getDias(){
 
 string Intern::toString(){
 	stringstream ss;
-	ss<<dias;
+	ss<<user<<" "<<email<<" "<<password<<" "<<dias;
 	return ss.str();
 }

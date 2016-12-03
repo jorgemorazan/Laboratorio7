@@ -1,8 +1,15 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
+#include "Usuario.h"
+#include "Administrador.h"
+#include "Manager.h"
+#include "Intern.h"
+#include "Supervisor.h"
 using namespace std;
 int main(){
+	string nombre,
 	bool esAdmin=false, esManager=false, esIntern=false, esSupervisor=false;
 	vector<Administrador*>admin;
 	vector<Manager*>managers;
@@ -34,6 +41,10 @@ int main(){
 	{
 		if(supervisores.at(i)->getUser()==username && supervisores.at(i)->getPassword()==password){
 			esSupervisor=true;
+			int cont=0;
+			cont = supervisores.at(i)->getContador();
+			cont+=1;
+			supervisores.at(i)->setContador(cont);
 		}
 	}
 	if(esAdmin||esManager){
@@ -73,7 +84,10 @@ int main(){
 						cout<<"Ingrese el password del usuario: ";
 						cin>>pass;
 						sz=pass.size();
-					}while(sz>16);
+						if(sz!=16){
+							cout<<endl<<"Tiene que tener 16 caracteres la contraseña"<<endl;
+						}
+					}while(sz!=16);
 					string sueldo;
 					cout<<"Ingrese el sueldo del Manager: ";
 					cin>>sueldo;
@@ -85,7 +99,10 @@ int main(){
 						cout<<"Ingrese el password del usuario: ";
 						cin>>pass;
 						sz=pass.size();
-					}while(sz>8);
+						if(sz!=8){
+							cout<<endl<<"Tiene que tener 8 caracteres la contraseña"<<endl;
+						}
+					}while(sz!=8);
 					string dias;
 					cout<<"Ingrese los días del Interno: ";
 					cin>>dias;
@@ -96,7 +113,10 @@ int main(){
 						cout<<"Ingrese el password del usuario: ";
 						cin>>pass;
 						sz=pass.size();
-					}while(sz>8);
+						if(sz!=8){
+							cout<<endl<<"Tiene que tener 8 caracteres la contraseña"<<endl;
+						}
+					}while(sz!=8);
 					supervisores.push_back(new Supervisor(user, email, pass, 0));
 				}
 				//vector.erase(vector.begin()+numeropedido);
@@ -123,7 +143,7 @@ int main(){
 					}
 					cout<<"Elija cual quiere eliminar: ";
 					cin>>eraseMe;
-					managers.erase(vector.begin()+eraseMe);
+					managers.erase(managers.begin()+eraseMe);
 				}
 				if(opcion==2){
 					int eraseMe;
@@ -133,7 +153,7 @@ int main(){
 					}
 					cout<<"Elija cual quiere eliminar: ";
 					cin>>eraseMe;
-					interns.erase(vector.begin()+eraseMe);
+					interns.erase(interns.begin()+eraseMe);
 				}
 				if(opcion==3){
 					int eraseMe;
@@ -143,7 +163,7 @@ int main(){
 					}
 					cout<<"Elija cual quiere eliminar: ";
 					cin>>eraseMe;
-					supervisores.erase(vector.begin()+eraseMe);
+					supervisores.erase(supervisores.begin()+eraseMe);
 				}
 			}//fin eliminar
 
@@ -151,10 +171,44 @@ int main(){
 	}
 
 	if(esIntern){
+		int opt=0;
+		do{
+			cout<<endl"Intern"<<endl<<"1. Ver usuarios\n2. Eliminar Usuario\n3. Salir";
+			if(opt==1){
+				for (int i = 0; i < interns.size(); ++i)
+				{
+					cout<<i<<"-"<<interns.at(i)->toString()<<endl;
+				}
+			}
+			if(opt==2){
+				int eraseMe;
+				for (int i = 0; i < interns.size(); ++i)
+				{
+					cout<<i<<"-"<<interns.at(i)->toString()<<endl;
+				}
+				cout<<"Elija cual quiere eliminar: ";
+				cin>>eraseMe;
+				interns.erase(interns.begin()+eraseMe);
+			}
+		}while(opt!=3);
 		//vector.erase(vector.begin()+numeropedido);
 	}
 	if(esSupervisor){
-
+		cout<<endl"MANAGERS"<<endl;
+		for (int i = 0; i < managers.size(); ++i)
+		{
+			cout<<i<<"-"<<managers.at(i)->toString()<<endl;
+		}
+		cout<<"INTERNS"<<endl;
+		for (int i = 0; i < interns.size(); ++i)
+		{
+			cout<<i<<"-"<<interns.at(i)->toString()<<endl;
+		}
+		cout<<"SUPERVISORES"<<endl;
+		for (int i = 0; i < supervisores.size(); ++i)
+		{
+			cout<<i<<"-"<<supervisores.at(i)->toString()<<endl;
+		}
 	}
 	return 0;
 }

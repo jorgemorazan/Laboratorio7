@@ -24,6 +24,6 @@ string Administrador::getFecha(){
 
 string Administrador::toString(){
 	stringstream ss;
-	ss<<fecha;
+	ss<<user<<" "<<email<<" "<<password<<" "<<fecha<<" ";
 	return ss.str();
 }

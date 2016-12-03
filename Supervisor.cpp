@@ -14,7 +14,7 @@ Supervisor::Supervisor(string user,string email,string password, int contador) :
     
 }
 
-void Supervisor::setContador(string pContador){
+void Supervisor::setContador(int pContador){
   contador = pContador;
 }
 
@@ -24,6 +24,6 @@ int Supervisor::getContador(){
 
 string Supervisor::toString(){
 	stringstream ss;
-	ss<<contador;
+	ss<<user<<" "<<email<<" "<<password<<" "<<contador;
 	return ss.str();
 }
