@@ -73,7 +73,6 @@ int main(){
 	for (int i = 0; i < managers.size(); ++i)
 	{
 		if(managers.at(i)->getUser()==username && managers.at(i)->getPassword()==password){
-			cout<<"Entre";
 			esManager=true;
 		}
 	}
