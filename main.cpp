@@ -7,14 +7,59 @@
 #include "Manager.h"
 #include "Intern.h"
 #include "Supervisor.h"
+#include <fstream>
+#include <stdlib.h>
+
 using namespace std;
 int main(){
-	string nombre,
 	bool esAdmin=false, esManager=false, esIntern=false, esSupervisor=false;
 	vector<Administrador*>admin;
 	vector<Manager*>managers;
 	vector<Intern*>interns;
 	vector<Supervisor*>supervisores;
+	string nombre, correo, contra, otro;
+	ifstream mana;
+	ifstream inter;
+	ifstream super;
+	mana.open("Managers.txt");
+	if(mana.fail()){
+		cout<<"ERROR";
+	}else{
+		while(!mana.eof()){
+			getline(mana, nombre, ' ');
+			getline(mana, correo, ' ');
+			getline(mana, contra, ' ');
+			getline(mana, otro, ' ');
+			managers.push_back(new Manager(nombre, correo, contra, otro));
+		}
+		mana.close();
+	}
+	inter.open("Interns.txt");
+	if(inter.fail()){
+		cout<<"ERROR";
+	}else{
+		while(!inter.eof()){
+			getline(inter, nombre, ' ');
+			getline(inter, correo, ' ');
+			getline(inter, contra, ' ');
+			getline(inter, otro, ' ');
+			interns.push_back(new Intern(nombre, correo, contra, otro));
+		}
+		inter.close();
+	}
+	super.open("Supervisores.txt");
+	if(super.fail()){
+		cout<<"ERROR";
+	}else{
+		while(!super.eof()){
+			getline(super, nombre, ' ');
+			getline(super, correo, ' ');
+			getline(super, contra, ' ');
+			getline(super, otro, ' ');
+			supervisores.push_back(new Intern(nombre, correo, contra, atoi(otro.c_str()));
+		}
+		super.close();
+	}
 	//string user,string email,string password, string fecha
 	admin.push_back(new Administrador("admin","admin@admin.com","admin001","03/09/1964"));
 	string username, password;
@@ -208,6 +253,33 @@ int main(){
 		for (int i = 0; i < supervisores.size(); ++i)
 		{
 			cout<<i<<"-"<<supervisores.at(i)->toString()<<endl;
+		}
+	}
+	ofstream file;
+	file.open("Managers.txt");
+	
+	for (int i = 0; i < managers.size(); ++i)
+	{
+		if(managers.at(i)!=NULL){
+			file<< i<<"-"<<managers.at(i)->toString()<<endl;
+		}
+	}
+	ofstream file;
+	file.open("Interns.txt");
+	
+	for (int i = 0; i < managers.size(); ++i)
+	{
+		if(managers.at(i)!=NULL){
+			file<< i<<"-"<<managers.at(i)->toString()<<endl;
+		}
+	}
+	ofstream file;
+	file.open("Supervisores.txt");
+	
+	for (int i = 0; i < managers.size(); ++i)
+	{
+		if(managers.at(i)!=NULL){
+			file<< i<<"-"<<managers.at(i)->toString()<<endl;
 		}
 	}
 	return 0;
